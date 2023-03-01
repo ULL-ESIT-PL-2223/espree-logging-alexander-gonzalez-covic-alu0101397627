@@ -1,49 +1,69 @@
-[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-f4981d0f882b2a3f0472912d15f9806d57e124e0fc890972558857b51b24a6f9.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=10283278)
-# Práctica Espree logging
+## Functions
 
-## Resumen de lo aprendido
+<dl>
+<dt><a href="#transpile">transpile(inputFile, outputFile)</a> ⇒ <code>void</code></dt>
+<dd><ul>
+<li>Transforms the code of a file, adding a console.log when we
+ enter a function, writing it into a file if the outputFile
+ parameter is specified, otherwise writing in the console.</li>
+</ul>
+</dd>
+<dt><a href="#addLogging">addLogging(code)</a> ⇒ <code>String</code></dt>
+<dd><ul>
+<li>Transforms the code of a file, adding a console.log when we
+enter a function of types FunctionDeclaration, FunctionExpression or
+ ArrowFunctionExpression.</li>
+</ul>
+</dd>
+<dt><a href="#addBeforeCode">addBeforeCode(node)</a> ⇒ <code>void</code></dt>
+<dd><ul>
+<li>Adds a console.log if we enter into a function,
+ arrow function or anonymous function, specifying the name of the function,
+ the parameters and the line number.</li>
+</ul>
+</dd>
+</dl>
 
-...
+<a name="transpile"></a>
 
-## Indicar los valores de los argumentos
+## transpile(inputFile, outputFile) ⇒ <code>void</code>
+- Transforms the code of a file, adding a console.log when we
+   enter a function, writing it into a file if the outputFile
+   parameter is specified, otherwise writing in the console.
 
-Se ha modificado el código de `logging-espree.js` para que el log también indique los valores de los argumentos que se pasaron a la función. 
-Ejemplo:
+**Kind**: global function  
+**Returns**: <code>void</code> - - Nothing  
 
-```javascript
-function foo(a, b) {
-  var x = 'blah';
-  var y = (function (z) {
-    return z+3;
-  })(2);
-}
-foo(1, 'wut', 3);
-```
+| Param | Type | Description |
+| --- | --- | --- |
+| inputFile | <code>String</code> | The path of the file to be transformed |
+| outputFile | <code>String</code> | The path of the file where the transformed code will be saved |
 
-```javascript
-function foo(a, b) {
-    console.log(`Entering foo(${ a }, ${ b })`);
-    var x = 'blah';
-    var y = function (z) {
-        console.log(`Entering <anonymous function>(${ z })`);
-        return z + 3;
-    }(2);
-}
-foo(1, 'wut', 3);
-```
+<a name="addLogging"></a>
 
-## CLI con [Commander.js](https://www.npmjs.com/package/commander)
+## addLogging(code) ⇒ <code>String</code>
+- Transforms the code of a file, adding a console.log when we
+  enter a function of types FunctionDeclaration, FunctionExpression or
+ ArrowFunctionExpression.
 
-...
+**Kind**: global function  
+**Returns**: <code>String</code> - - The transformed code  
 
-## Reto 1: Soportar funciones flecha
+| Param | Type | Description |
+| --- | --- | --- |
+| code | <code>String</code> | The code to be transformed |
 
-...
+<a name="addBeforeCode"></a>
 
-## Reto 2: Añadir el número de línea
+## addBeforeCode(node) ⇒ <code>void</code>
+- Adds a console.log if we enter into a function,
+   arrow function or anonymous function, specifying the name of the function,
+   the parameters and the line number.
 
-...
+**Kind**: global function  
+**Returns**: <code>void</code> - - Nothing  
 
-## Tests and Covering
+| Param | Type | Description |
+| --- | --- | --- |
+| node | <code>Node</code> | The node were we are currently |
 
-...

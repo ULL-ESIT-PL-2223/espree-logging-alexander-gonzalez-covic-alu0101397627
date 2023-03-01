@@ -11,7 +11,7 @@
     "exec": "bin/log.js",
     "exec-test": "npm run exec -- test/data/test1.js",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "cov": "npm test -- --coverage; rm ./coverage/clover.xml ./coverage/coverage-final.json ./coverage/lcov.info && mv ./coverage/lcov-report/* ./coverage/ && rm -r ./coverage/lcov-report",
+    "cov": "npm test -- --coverage; rm ./docs/clover.xml ./docs/coverage-final.json ./docs/lcov.info && mv ./docs/lcov-report/* ./docs/ && rm -r ./docs/lcov-report",
     "clean": "rm -rf test/data/logged*.js"
   },
   "dependencies": {
