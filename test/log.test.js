@@ -21,6 +21,8 @@ function removeSpaces(s) {
 
 for (let i = 0; i < Test.length; i++) {
   it(`transpile(${Tst[i].input}, ${Tst[i].output})`, async () => {
+    const oldLog = console.log;
+    console.log = (...values) => {};
     await transpile(Test[i].input, Test[i].output);
     // Check code
     const outputTranspile = await fs.readFile(Test[i].output, 'utf-8');
@@ -36,6 +38,7 @@ for (let i = 0; i < Test.length; i++) {
     console.log = (...s) => { outputEvaluation += s.join('') };
     eval(outputTranspile);
     assert.equal(removeSpaces(outputEvaluation), removeSpaces(outputCorrect));
+    console.log = oldLog;
   });
 }
 
